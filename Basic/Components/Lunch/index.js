@@ -6,12 +6,12 @@ export default class Lunch extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected1: "key1"
+      selected: this.props.rate
     };
   }
   onValueChange(value) {
     this.setState({
-      selected1: value
+      selected: value
     });
   }
   
@@ -21,19 +21,18 @@ export default class Lunch extends Component {
         <Text style={styles.text}>
           {this.props.name}
         </Text>
-        <Form>
+        <Form style={styles.form}>
           <Picker
             iosHeader="Select one"
             mode="dropdown"
-            selectedValue={this.state.selected1}
+            selectedValue={this.state.selected}
             onValueChange={this.onValueChange.bind(this)}
-            style={styles.picker}
           >
-            <Item label="*" value="key0" />
-            <Item label="**" value="key1" />
-            <Item label="***" value="key2" />
-            <Item label="****" value="key3" />
-            <Item label="*****" value="key4" />
+            <Item label="*" value="1" />
+            <Item label="**" value="2" />
+            <Item label="***" value="3" />
+            <Item label="****" value="4" />
+            <Item label="*****" value="5" />
           </Picker>
         </Form>
       </View>
@@ -43,17 +42,17 @@ export default class Lunch extends Component {
 
 const styles = StyleSheet.create({
   view: {
+    flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'space-between',
+    alignItems: 'center',
     flexDirection: 'row',
     width: '100%',
   },
   text: {
-    backgroundColor: 'green',
     flex: 1,
+    width: '100%',
   },
-  picker: {
-    backgroundColor: 'red',
-    flex: 1,
+  form: {
+    width: 100,
   }
 });
