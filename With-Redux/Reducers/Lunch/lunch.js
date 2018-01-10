@@ -13,10 +13,8 @@ const initialState = {
 
 export default function lunch(state = initialState, action) {
   const nextState = state;
-  console.log(nextState);
   switch (action.type) {
     case SET_LUNCH_RATE:
-      console.log(action);
       _.set(nextState, `rate.${action.id}`, action.rate);
       return Object.assign({}, state, nextState);
     default:

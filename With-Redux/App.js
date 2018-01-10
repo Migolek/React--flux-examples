@@ -23,6 +23,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { props } = this;
     if (this.state.loading) {
       return <Expo.AppLoading />;
     }
