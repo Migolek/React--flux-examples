@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { Component, PropTypes  } from 'react';
+import _ from 'lodash';
+import { StyleSheet, View, SectionList } from 'react-native';
 import { Picker, Item, Form, Text } from 'native-base';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as lunchActions from '../../Reducers/Lunch/lunchActions.js';
 
-export default class Lunch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: this.props.rate
-    };
-  }
+class Lunch extends React.Component {
+
   onValueChange(value) {
-    this.setState({
-      selected: value
-    });
-  }
-  
+    const { id, actions } = this.props;
+    const { setLunchRate } = actions;
+    setLunchRate(id, value);
+  };
+
   render() {
+    const { id, rate } = this.props;
+    console.log(id,_.get(rate, id));
     return (
       <View style={styles.view}>
         <Text style={styles.text}>
@@ -25,7 +26,7 @@ export default class Lunch extends Component {
           <Picker
             iosHeader="Select one"
             mode="dropdown"
-            selectedValue={this.state.selected}
+            selectedValue={_.get(rate, id)}
             onValueChange={this.onValueChange.bind(this)}
           >
             <Item label="*" value="1" />
@@ -56,3 +57,17 @@ const styles = StyleSheet.create({
     width: 100,
   }
 });
+
+const mapStateToProps = (state) => {
+  return { 
+    rate: state.lunch.rate
+ };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(lunchActions, dispatch),
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Lunch);

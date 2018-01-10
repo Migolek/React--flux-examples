@@ -1,6 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainView from './Components/MainView';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './Components/Lunch'
+import reducers from './Reducers/'
+
+const store = createStore(reducers);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,7 +28,9 @@ export default class App extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <MainView />
+        <Provider store={store}>
+          <MainView />
+        </Provider>
       </View>
     );
   }

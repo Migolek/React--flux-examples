@@ -21,32 +21,32 @@ export default class MainView extends Component {
           <Card>
             <CardItem>
               <Body>
-                <Lunch name="Koltet w płatkach kukurydzianych" rate="5"/>
+                <Lunch id={'klasyk'} name="Koltet w płatkach kukurydzianych" />
               </Body>
             </CardItem>
             <CardItem>
               <Body>
-                <Lunch name="Spaghetti carbonara" rate="3"/>
+                <Lunch id={'carbonara'} name="Spaghetti carbonara" />
               </Body>
             </CardItem>
             <CardItem>
               <Body>
-                <Lunch name="Koltet w panierce sezamowej" rate="4"/>
+                <Lunch id={'sezam'} name="Koltet w panierce sezamowej" />
               </Body>
             </CardItem>
             <CardItem>
               <Body>
-                <Lunch name="Rosół" rate="5"/>
+                <Lunch id={'rosol'} name="Rosół" />
               </Body>
             </CardItem>
             <CardItem>
               <Body>
-                <Lunch name="Pomidorowa" rate="2"/>
+                <Lunch id={'pomidorowa'} name="Pomidorowa" />
               </Body>
             </CardItem>
             <CardItem>
               <Body>
-                <Lunch name="Kurczak z frytkami i surówką" rate="4"/>
+                <Lunch id={'kurczak'} name="Kurczak z frytkami i surówką" />
               </Body>
             </CardItem>
           </Card>

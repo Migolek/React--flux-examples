@@ -1,0 +1,1 @@
+export const SET_LUNCH_RATE = 'SET_LUNCH_RATE';
