@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainView from './Components/MainView';
+import { observer } from 'mobx-react';
+import store from './AppStore';
 
+@observer
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +25,7 @@ export default class App extends React.Component {
     }
     return (
       <View style={styles.container}>
-        <MainView />
+        <MainView store={store}/>
       </View>
     );
   }
