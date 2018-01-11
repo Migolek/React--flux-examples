@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import MainView from './Components/MainView';
-import { createStore } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import reducer from './Components/Lunch'
 import reducers from './Reducers/'
+import logger from 'redux-logger';
 
-const store = createStore(reducers);
+const middleware = compose(applyMiddleware(logger));
+const store = createStore(reducers, middleware);
 
 export default class App extends React.Component {
   constructor(props) {
