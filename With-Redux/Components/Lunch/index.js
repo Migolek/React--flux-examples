@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import React, { Component, PropTypes  } from 'react';
+import _ from 'lodash';
+import { StyleSheet, View, SectionList } from 'react-native';
 import { Picker, Item, Form, Text } from 'native-base';
 
-export default class Lunch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: this.props.rate
-    };
-  }
+export default class Lunch extends React.Component {
+
   onValueChange(value) {
-    this.setState({
-      selected: value
-    });
-  }
+    const { id, rate } = this.props;
+    const { setLunchRate } = this.props.actions;
+    setLunchRate(id, value);
+    //this.forceUpdate();
+  };
   
   render() {
+    const { id, rate } = this.props;
     return (
       <View style={styles.view}>
         <Text style={styles.text}>
@@ -25,7 +23,7 @@ export default class Lunch extends Component {
           <Picker
             iosHeader="Select one"
             mode="dropdown"
-            selectedValue={this.state.selected}
+            selectedValue={_.get(rate, id)}
             onValueChange={this.onValueChange.bind(this)}
           >
             <Item label="*" value="1" />
@@ -56,3 +54,4 @@ const styles = StyleSheet.create({
     width: 100,
   }
 });
+
