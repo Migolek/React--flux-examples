@@ -9,7 +9,7 @@ export default class Lunch extends React.Component {
     const { id, rate } = this.props;
     const { setLunchRate } = this.props.actions;
     setLunchRate(id, value);
-    this.forceUpdate();
+    //this.forceUpdate();
   };
   
   render() {

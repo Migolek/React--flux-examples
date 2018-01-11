@@ -12,11 +12,15 @@ const initialState = {
 };
 
 export default function lunch(state = initialState, action) {
-  const nextState = state;
   switch (action.type) {
-    case SET_LUNCH_RATE:
-      _.set(nextState, `rate.${action.id}`, action.rate);
-      return Object.assign({}, state, nextState);
+    case SET_LUNCH_RATE: {
+      return Object.assign({}, state, {
+        rate: { 
+          ...state.rate,
+          [action.id]: action.rate,
+        },
+      });
+    }
     default:
       return state;
   }
