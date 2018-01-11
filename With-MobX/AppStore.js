@@ -11,9 +11,6 @@ export class AppStore {
     kurczak: '5',
   }
 
-  @computed get newRate() {
-    return this.selected = this.rate;
-  };
 }
 
 export default new AppStore

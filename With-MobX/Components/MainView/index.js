@@ -7,7 +7,6 @@ import { observer } from 'mobx-react';
 export default class MainView extends Component {
   render() {
     const { store } = this.props;
-    console.log(this.props.store);
     return (
       <Container>
         <Header>
