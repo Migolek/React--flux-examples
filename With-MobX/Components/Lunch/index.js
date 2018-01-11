@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Picker, Item, Form, Text } from 'native-base';
+import { observer } from 'mobx-react';
+import {observable} from "mobx"
 
+@observer
 export default class Lunch extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: this.props.rate
-    };
-  }
+  @observable selected = '3';
+  
   onValueChange(value) {
-    this.setState({
-      selected: value
-    });
+    this.selected = value;
   }
   
   render() {
+    const { store } = this.props;
     return (
       <View style={styles.view}>
         <Text style={styles.text}>
@@ -25,7 +23,7 @@ export default class Lunch extends Component {
           <Picker
             iosHeader="Select one"
             mode="dropdown"
-            selectedValue={this.state.selected}
+            selectedValue={this.selected}
             onValueChange={this.onValueChange.bind(this)}
           >
             <Item label="*" value="1" />
